@@ -16,9 +16,7 @@ form {
   width: 200px;
   padding: 20px;
   margin-top: 20px;
-  align-items: center;
   box-shadow: #0000003d 0 3px 8px;
-  align-content: center;
 }
 
 /* targets whole posts container */
