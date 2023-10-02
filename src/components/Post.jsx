@@ -23,7 +23,7 @@ export default function Post() {
 
     const info = await res.json();
     setChildren(info.post.children);
-    console.log(info);
+    //console.log(info);
   }
   fetchPosts();
 

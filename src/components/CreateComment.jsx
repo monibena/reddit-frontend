@@ -32,11 +32,11 @@ export default function CreateComment({ postId, subredditId }) {
     });
 
     const info = await res.json();
-    console.log(info);
+    //console.log(info);
 
     if (!info.success) {
       setError(info.error);
-      console.log(error);
+      //console.log(error);
     } else {
       //how cna we clear the input text
       setText("");
