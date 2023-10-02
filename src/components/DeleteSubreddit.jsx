@@ -21,7 +21,7 @@ export default function DeleteSubreddit({ subreddit }) {
     });
     const info = await res.json();
     fetchSubreddits();
-    console.log(info);
+    // console.log(info);
 
     if (!info.success) {
       setError(info.error);

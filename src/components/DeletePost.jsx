@@ -21,7 +21,7 @@ export default function DeletePost({ post }) {
     });
     const info = await res.json();
     fetchPosts();
-    console.log(info);
+    //console.log(info);
 
     if (!info.success) {
       setError(info.error);
