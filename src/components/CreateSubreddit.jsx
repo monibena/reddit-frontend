@@ -29,18 +29,18 @@ export default function CreateSubreddit() {
       }),
     });
     const info = await res.json();
-    console.log(info);
+    //console.log(info);
 
     if (!info.success) {
       setError(info.error);
       setName("");
-      console.log(error);
+      //console.log(error);
     } else {
       //how cna we clear the input text
       setName("");
       fetchSubreddits();
       setIsFormVisible(false);
-      console.log(subreddits);
+      // console.log(subreddits);
     }
   }
 
