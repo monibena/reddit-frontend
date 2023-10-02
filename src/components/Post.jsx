@@ -4,37 +4,37 @@ import { API } from "../lib";
 import DeletePost from "./DeletePost";
 import Votes from "./Votes";
 import ChildPost from "./ChildPost";
-import { BiComment } from "react-icons/bi";
 import CreateComment from "./CreateComment";
+import { FiEdit3 } from "react-icons/fi";
 
 export default function Post() {
   //const [post, setPost] = useState("");
-  const { posts, fetchPosts } = useOutletContext();
+  const { posts, fetchPosts, user } = useOutletContext();
   const [children, setChildren] = useState([]);
 
-  const postId = useParams().postId;
+  const { postId } = useParams();
 
-  //find post with matching ID
-  const post = posts.find((_post) => _post.id === postId);
+  // console.log(postId);
 
-  //console.log(postId);
-  // useEffect(() => {
+  // //useEffect(() => {
   async function fetchChildren() {
     //console.log("hi");
     const res = await fetch(`${API}/posts/${postId}`);
 
     const info = await res.json();
     setChildren(info.post.children);
-    //console.log(info);
-    //console.log(children);
+    console.log(info);
   }
-  //   fetchChildren();
-  // }, [postId]);
+  fetchPosts();
 
   useEffect(() => {
     fetchChildren();
-    fetchPosts();
   }, [postId]);
+
+  //
+
+  //find post with matching ID
+  const post = posts.find((_post) => _post.id === postId);
 
   //if post not found
   if (!post) {
@@ -51,30 +51,25 @@ export default function Post() {
         <p>{post.text}</p>
         <p>Posted by u/{post.user.username}</p>
         <div className="icon-container">
+          <Votes post={post} />
           <DeletePost post={post} />
+
+          {/* checks that logged in user is authorized to edit */}
+          {user.id === post.userId && (
+            <Link to={`/editPosts/${post.id}`}>
+              <button type="submit">
+                <FiEdit3 />
+              </button>
+            </Link>
+          )}
         </div>
-        <CreateComment
-          postId={postId}
-          subredditId={post.subreddit.id}
-          fetchChildren={fetchChildren}
-        />
+
+        <CreateComment postId={postId} subredditId={post.subreddit.id} />
       </div>
-      {/* {post.children &&
-        post.children.map((child) => {
-          <p>{post.children.text}</p>;
-        })} */}
+
       {post.children.map((child) => (
-        <ChildPost key={child.id} child={child} />
+        <ChildPost key={child.id} child={child} post={post} />
       ))}
     </div>
   );
 }
-
-// function ChildPost({ child }) {
-//   return (
-//     <div className="child-post" key={child.id}>
-//       {/* Render child comment content here */}
-//       <p>{child.text}</p>
-//     </div>
-//   );
-// }

@@ -72,6 +72,7 @@ export default function App() {
   useEffect(() => {
     fetchSubreddits();
   }, [token]);
+  //----------------------------------------------------------------------
 
   return (
     <div>

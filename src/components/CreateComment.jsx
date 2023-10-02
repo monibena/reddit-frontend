@@ -3,19 +3,13 @@ import { useOutletContext } from "react-router-dom";
 import { API } from "../lib";
 import { BiComment } from "react-icons/bi";
 
-export default function CreateComment({ postId, subredditId, fetchChildren }) {
+export default function CreateComment({ postId, subredditId }) {
   const { token, subreddits, fechPosts, posts } = useOutletContext();
 
-  console.log(posts);
+  //console.log(posts);
 
-  //const [subredditId, setSubredditId] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState("");
-
-  //find post with matching ID
-  // const subredditId = subreddits.find(
-  //   (_subreddit) => _subreddit.id === subredditId
-  // );
 
   //console.log(subredditId);
 
@@ -38,23 +32,19 @@ export default function CreateComment({ postId, subredditId, fetchChildren }) {
     });
 
     const info = await res.json();
-    //console.log(info);
+    console.log(info);
 
     if (!info.success) {
-      return setError(info.error);
+      setError(info.error);
+      console.log(error);
+    } else {
+      //how cna we clear the input text
+      setText("");
     }
-
-    setText("");
-    fechPosts();
-    fetchChildren();
   }
 
   return (
     <div>
-      {/* <button>
-        <BiComment />
-      </button> */}
-
       <form onSubmit={handleSubmit}>
         <input
           type="text"
