@@ -1,0 +1,73 @@
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* .login-container {
+  display: flex;
+  flex-direction: column;
+} */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 200px;
+  padding: 20px;
+  margin-top: 20px;
+  align-items: center;
+  box-shadow: #0000003d 0 3px 8px;
+}
+
+/* targets whole posts container */
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 50px 50px;
+}
+
+.subreddit-container {
+  display: flex;
+
+  padding: 40px;
+}
+
+.subreddit-font {
+  font-family: inherit;
+  text-wrap: nowrap;
+}
+
+/* single post */
+.post {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  box-shadow: 10px 5px 5px gray;
+
+  padding: 20px;
+}
+
+.whole-container {
+  display: flex;
+}
+
+.icon-container {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.childContainer {
+  margin: 25px;
+  padding: 10px;
+  border: 1px solid;
+  box-shadow: 10px 5px 5px gray;
+}
